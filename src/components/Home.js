@@ -12,30 +12,28 @@ const Home = () => {
                 <table class="table mt-5">
                     <thead>
                         <tr className='table-dark'>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Id</th>
+                            <th scope="col">User Name</th>
+                            <th scope="col">Job</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Numbers</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <td>Siddique</td>
+                            <td>Web developer</td>
+                            <td>Siddique@gmail.com</td>
+                            <td>+8801789848646</td>
+                            <td className='d-flex justify-content-between'>
+                                <button className='btn btn-success'><i class="fa-solid fa-eye"></i> </button>
+                                <button className='btn btn-primary'><i class="fa-solid fa-pen"></i> </button>
+                                <button className='btn btn-danger'><i class="fa-solid fa-trash"></i></button>
+                            </td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        
                     </tbody>
                 </table>
 
