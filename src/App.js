@@ -6,6 +6,7 @@ import Navbaar from './components/Navbaar';
 import Home from './components/Home';
 import { Route, Routes } from 'react-router-dom';
 import Register from './components/Register';
+import Edit from './components/Edit';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/edit/:id" element={<Edit />} />
       </Routes>
     </div>
   );
