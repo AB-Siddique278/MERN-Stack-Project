@@ -10,7 +10,8 @@ const Register = () => {
         mobile: "",
         work: "",
         add: "",
-        desc: ""
+        desc: "",
+        img: ""
     })
 
     const setdata =(e)=>{
@@ -23,7 +24,38 @@ const Register = () => {
             }
         })
     }
+
     
+
+    const addinpdata = async (e) => {
+        e.preventDefault();
+
+        const { name, email, work, add, mobile, desc, age, img } = inpval;
+
+        const res = await fetch("/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name, email, work, add, mobile, desc, age, img
+            })
+        });
+
+        const data = await res.json();
+        console.log(data);
+
+        if (res.status === 422 || !data) {
+            console.log("error ");
+            alert("error");
+
+        } else {
+          
+            alert("Data Added")
+            console.log("data added");
+
+        }
+    }
     return (
         <div className='container'>
             <NavLink to="/"> Home </NavLink>
@@ -53,12 +85,23 @@ const Register = () => {
                         <label for="exampleInputPassword1" class="form-label">Address</label>
                         <input type="text" value={inpval.add} onChange={setdata} name="add" class="form-control" id="exampleInputPassword1" />
                     </div>
+
+                    <div class="mb-3 col-lg-12 col-md-6 col-12">
+                        <label for="exampleInputEmail1" class="form-label">Image</label>
+                        <input type="text" value={inpval.img} onChange={setdata} name="img" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                    </div>
+
+
+
+
+
+
                     <div class="mb-3 col-lg-12 col-md-12 col-12">
                         <label for="exampleInputPassword1" class="form-label">Description</label>
                         <textarea name="desc" value={inpval.desc} onChange={setdata} className="form-control" id="" cols="30" rows="5"></textarea>
                     </div>
 
-                    <button type="submit"  class="btn btn-primary">Submit</button>
+                    <button type="submit" onClick={addinpdata} class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
