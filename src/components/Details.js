@@ -6,16 +6,19 @@ import WorkIcon from '@mui/icons-material/Work';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Avatar, Card, CardContent } from '@mui/material';
-import { NavLink, useParams, useHistory } from 'react-router-dom';
+import { NavLink, useParams,} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const Details = () => {
 
-
+    const [getuserdata, setUserdata] = useState([]);
+    console.log(getuserdata);
  
 
     const { id } = useParams("");
     console.log(id);
-    const [getuserdata, setUserdata] = useState([]);
-    console.log(getuserdata);
+
+    const navigate = useNavigate();
+    
 
     const getdata = async () => {
 
@@ -34,7 +37,9 @@ const Details = () => {
 
         } else {
             setUserdata(data)
+           
             console.log("get data");
+            navigate.push('/');
 
         }
     }
@@ -43,6 +48,26 @@ const Details = () => {
         getdata();
     }, [])
 
+    const deleteuser = async (id) => {
+
+        const res2 = await fetch(`/deleteuser/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        const deletedata = await res2.json();
+        console.log(deletedata);
+
+        if (res2.status === 422 || !deletedata) {
+            console.log("error");
+        } else {
+            console.log("user deleted");
+            
+        }
+
+    }
 
 
 
@@ -62,8 +87,8 @@ const Details = () => {
         <Card sx={{ maxWidth: 600 }}>
             <CardContent>
                 <div className="add_btn">
-                    <NavLink to={`/edit/`}>  <button className="btn btn-primary mx-2"><CreateIcon /></button></NavLink>
-                    <button className="btn btn-danger"><DeleteOutlineIcon /></button>
+                <NavLink to={`/edit/${getuserdata._id}`}><button className="btn btn-primary mx-2"><CreateIcon /></button></NavLink>
+                <button className="btn btn-danger" onClick={() => deleteuser(getuserdata._id)}><DeleteOutlineIcon /></button>
                 </div>
                 <div className="row">
                     <div className="left_view col-lg-6 col-md-6 col-12">
