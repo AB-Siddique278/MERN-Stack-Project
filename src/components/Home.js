@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import CreateIcon from '@mui/icons-material/Create';
 const Home = () => {
 
     // const [getuserdata, setUserdata] = useState([]);
@@ -68,7 +69,7 @@ const Home = () => {
         getdata();
     }, [])
 
-
+    
 
 
 
@@ -117,9 +118,9 @@ const Home = () => {
                                            
                                             <td>{element.mobile}</td>
                                             <td className='d-flex justify-content-between'>
-                                                <button className='btn btn-success'><i class="fa-solid fa-eye"></i> </button>
-                                                <button className='btn btn-primary'><i class="fa-solid fa-pen"></i> </button>
-                                                <button className='btn btn-danger'><i class="fa-solid fa-trash"></i></button>
+                                            <NavLink to={`view/${element._id}`}> <button className="btn btn-success"><RemoveRedEyeIcon /></button></NavLink>
+                                            <NavLink to={`edit/${element._id}`}>  <button className="btn btn-primary"><CreateIcon /></button></NavLink>
+                                                <button className='btn btn-danger'onClick={deleteuser} ><i class="fa-solid fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     </>
