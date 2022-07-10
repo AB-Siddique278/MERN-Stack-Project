@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+
 
 const Register = () => {
 
+  
+
     const [inpval, setINP] = useState({
         name: "",
-        email: "",
+        email: "",  
         age: "",
         mobile: "",
         work: "",
@@ -52,6 +55,7 @@ const Register = () => {
         } else {
           
             alert("Data Added")
+           
             console.log("data added");
 
         }
