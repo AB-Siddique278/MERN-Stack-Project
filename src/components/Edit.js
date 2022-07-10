@@ -3,8 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, useParams,  } from 'react-router-dom';
 
 const Edit = () => {
-    // const [getuserdata, setUserdata] = useState([]);
-    // console.log(getuserdata);
+   
 
    
 
